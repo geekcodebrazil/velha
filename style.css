@@ -1,0 +1,351 @@
+/* Reset básico e fontes */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%; /* Garante que o html ocupe toda a altura */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e); /* Gradiente azul escuro/roxo */
+    color: #e0e0ff; /* Texto claro levemente azulado/roxo */
+    display: flex;
+    flex-direction: column; /* MUITO IMPORTANTE: Empilha os filhos (main e footer) verticalmente */
+    min-height: 100vh; /* Garante que o body ocupe pelo menos toda a altura da viewport */
+    padding: 0; /* Removido padding do body, será aplicado no main se necessário */
+}
+
+/* Wrapper para o conteúdo principal */
+.main-content {
+    flex-grow: 1; /* MUITO IMPORTANTE: Faz este elemento crescer e ocupar o espaço disponível, empurrando o footer para baixo */
+    display: flex; /* Usamos flex aqui para centralizar o game-container */
+    justify-content: center; /* Centraliza o game-container horizontalmente */
+    align-items: center; /* Centraliza o game-container verticalmente */
+    width: 100%; /* Ocupa toda a largura */
+    padding: 15px; /* Adiciona o padding que estava no body aqui */
+}
+
+/* Container Principal (sem mudanças significativas aqui, mas garantindo que funcione dentro do novo contexto) */
+.game-container {
+    background-color: rgba(40, 42, 54, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid #6272a4;
+    /* Removido display: flex, justify-content, align-items, min-height do body original, pois agora estão no .main-content */
+}
+
+/* Cabeçalho */
+header h1 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+    letter-spacing: 1px;
+}
+
+.geek {
+    color: #50fa7b;
+}
+
+.code {
+    color: #ff79c6;
+}
+
+/* Seleção de Modo */
+#mode-selection h2 {
+    margin-bottom: 20px;
+    color: #bd93f9;
+}
+
+.mode-button {
+    background-color: #6272a4;
+    color: #f8f8f2;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+.mode-button:hover {
+    background-color: #7a89c7;
+    transform: translateY(-2px);
+}
+
+/* Área do Jogo */
+#status-area {
+    min-height: 2.5em;
+    margin-bottom: 15px;
+}
+
+#status {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #f1fa8c;
+    transition: color 0.3s ease;
+}
+
+/* Tabuleiro */
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 300px;
+    width: 80vw;
+    margin: 20px auto;
+    aspect-ratio: 1 / 1;
+}
+
+.cell {
+    background-color: #44475a;
+    border: 2px solid #6272a4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 5px;
+    user-select: none;
+    position: relative;
+	aspect-ratio: 1 / 1;
+}
+
+.cell:hover:not(.x):not(.o) {
+    background-color: #5a5d74;
+    transform: scale(1.03);
+}
+
+.cell.x {
+    color: #50fa7b;
+    cursor: not-allowed;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.cell.o {
+    color: #ff79c6;
+    cursor: not-allowed;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.winning-cell {
+    background-color: #f1fa8c !important;
+    color: #282a36 !important;
+    animation: pulse 0.8s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+/* Placar */
+#scoreboard {
+    margin-top: 25px;
+    background-color: #44475a;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.score-item {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #bd93f9;
+}
+
+.score-item span {
+    color: #f8f8f2;
+    margin-left: 5px;
+}
+
+/* Controles / Rodapé Interno */
+#controls {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid #6272a4;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.control-button {
+    background-color: #bd93f9;
+    color: #282a36;
+    border: none;
+    padding: 10px 20px;
+    font-size: 0.9em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+}
+
+.control-button:hover {
+    background-color: #caa9fa;
+    transform: translateY(-2px);
+}
+
+/* --- Estilos do Footer --- */
+.page-footer {
+    width: 100%;
+    padding: 20px 15px;
+    margin-top: 0; /* Removido margin-top, pois o flex-grow do main faz o espaçamento */
+    text-align: center;
+    color: #6272a4;
+    font-size: 0.85em;
+    border-top: 1px solid #44475a;
+    flex-shrink: 0; /* Garante que o footer não encolha */
+}
+
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #bd93f9;
+    text-decoration: none;
+    margin: 0 5px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #f1fa8c;
+    text-decoration: underline;
+}
+
+.footer-links span {
+    color: #6272a4;
+    margin: 0 3px;
+    user-select: none;
+}
+
+.page-footer .geek {
+    color: #50fa7b;
+    font-weight: bold;
+}
+
+.page-footer .code {
+    color: #ff79c6;
+    font-weight: bold;
+}
+
+.page-footer .copyright {
+    margin-top: 10px;
+    color: #bd93f9;
+    font-size: 0.9em;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    /* Ajustes no container principal e conteúdo */
+     .main-content {
+        padding: 10px; /* Reduz padding geral */
+        /* align-items: flex-start; */ /* Opcional: Alinhar container no topo em telas menores */
+    }
+    .game-container {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    #board {
+        max-width: 280px;
+        gap: 8px;
+    }
+
+    .cell {
+        font-size: 2.5em;
+    }
+
+    .mode-button, .control-button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    #scoreboard {
+        padding: 8px 10px;
+    }
+     .score-item {
+        font-size: 0.8em;
+    }
+
+    /* Ajustes no Footer */
+     .page-footer {
+        padding: 15px 10px;
+        font-size: 0.8em;
+    }
+
+    .footer-links a {
+        margin: 0 3px;
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+
+    .footer-links span {
+        margin: 0 1px;
+    }
+     .page-footer .copyright {
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 400px) {
+     header h1 {
+        font-size: 1.5em;
+    }
+    #board {
+        max-width: 240px;
+        gap: 5px;
+    }
+     .cell {
+        font-size: 2em;
+    }
+
+    #controls {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 15px;
+        margin-top: 15px;
+    }
+    .control-button {
+        width: 80%;
+        margin-bottom: 5px;
+    }
+
+     #scoreboard {
+        flex-direction: column;
+        align-items: center;
+    }
+
+     /* Ajustes footer telas muito pequenas (opcional) */
+     .footer-links span {
+        /* display: none; */ /* Pode esconder separadores */
+    }
+    /* .footer-links a { */
+        /* display: block; */ /* Um link por linha */
+        /* margin-bottom: 8px; */
+    /* } */
+}

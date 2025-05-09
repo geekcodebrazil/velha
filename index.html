@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEEK CODE - Jogo da Velha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Wrapper para o conteúdo principal -->
+    <main class="main-content">
+        <div class="game-container">
+            <header>
+                <h1><span class="geek">GEEK</span><span class="code"> CODE</span></h1>
+				<h1><span class="geek">Jogo da Velha</span></h1>
+            </header>
+
+            <div id="mode-selection">
+                <h2>Escolha o Modo de Jogo:</h2>
+                <button id="pvp-button" class="mode-button">Jogador vs Jogador</button>
+                <button id="pvai-button" class="mode-button">Jogador vs Máquina (IA)</button>
+            </div>
+
+            <div id="game-area" style="display: none;">
+                <div id="status-area">
+                    <p id="status">Status do Jogo</p>
+                </div>
+
+                <div id="board">
+                    <div class="cell" data-index="0"></div>
+                    <div class="cell" data-index="1"></div>
+                    <div class="cell" data-index="2"></div>
+                    <div class="cell" data-index="3"></div>
+                    <div class="cell" data-index="4"></div>
+                    <div class="cell" data-index="5"></div>
+                    <div class="cell" data-index="6"></div>
+                    <div class="cell" data-index="7"></div>
+                    <div class="cell" data-index="8"></div>
+                </div>
+
+                <div id="scoreboard">
+                    <span class="score-item">Você (X): <span id="player-score">0</span></span>
+                    <span class="score-item" id="opponent-label">Oponente (O): <span id="opponent-score">0</span></span>
+                    <span class="score-item">Empates: <span id="draw-score">0</span></span>
+                </div>
+
+                <div id="controls">
+                    <button id="restart-button" class="control-button">Reiniciar Jogo</button>
+                    <button id="change-mode-button" class="control-button">Trocar Modo</button>
+                    <button id="reset-score-button" class="control-button">Resetar Placar</button>
+                </div>
+            </div>
+        </div>
+    </main> <!-- Fim do main-content wrapper -->
+
+    <footer class="page-footer">
+        <div class="footer-links">
+            <a href="#privacy" rel="noopener noreferrer">Privacidade</a>
+            <span>|</span>
+            <a href="#services" rel="noopener noreferrer">Serviços</a>
+            <span>|</span>
+            <a href="#about" rel="noopener noreferrer">Sobre</a>
+            <span>|</span>
+            <a href="#terms" rel="noopener noreferrer">Termos</a>
+            <span>|</span>
+            <a href="index.html" rel="noopener noreferrer">Início</a>
+            <span>|</span>
+            <a href="https://github.com/seu-usuario-github" target="_blank" rel="noopener noreferrer">Desenvolvido por <span class="geek">GΞΞK</span><span class="code"> CΦDΞ</span></a>
+        </div>
+        <p class="copyright">&copy; <span id="current-year"></span> <span class="geek">GΞΞK</span><span class="code"> CΦDΞ</span>. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
